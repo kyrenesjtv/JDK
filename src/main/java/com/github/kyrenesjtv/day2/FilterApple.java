@@ -87,7 +87,7 @@ public class FilterApple {
         System.out.println(lambdaResult);
 
         //能够接收Lambda表达式的参数类型，是一个只包含一个方法的接口。只包含一个方法的接口称之为“函数接口”。
-        //  一般来说可以lambda的 类名上面都会加@FunctionalInterface
+        //  一般来说可以lambda的 接口名上面都会加@FunctionalInterface
 
         //普通的
         new Thread(new Runnable() {
