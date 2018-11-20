@@ -3,10 +3,7 @@ package com.github.kyrenesjtv.day4;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.function.*;
 
 /**
  * @ProjectName: JDK8
@@ -79,6 +76,14 @@ public class LambdaUsage {
     }
 
 
+    private static String testFunction(Apple apple, Function<Apple, String> function) {
+        return function.apply(apple);
+    }
+
+    private static Apple testBiFunction(String color, long weight, BiFunction<String, Long, Apple> biFunction) {
+        return biFunction.apply(color, weight);
+    }
+
     public static void main(String[] args) {
 
         //        Runnable r1 = () -> System.out.println("hello world");
@@ -109,7 +114,17 @@ public class LambdaUsage {
 
         //        simpleTestConsumer(apples,(a)-> System.out.println(a));
 
-        simpleBiConsumer("apple", apples, (a, s) -> System.out.println(a + s));
+        //        simpleBiConsumer("apple", apples, (a, s) -> System.out.println(a + s));
+
+        //        String  resultString = testFunction(new Apple("Yelloe", 120), (a) -> a.toString());
+        //        System.out.println(resultString);
+
+        //        IntFunction<Double> resultInt = (i) -> i * 10.00d;
+        //        Double apply = resultInt.apply(10);
+        //        System.out.println(apply);
+
+        Apple apple = testBiFunction("yellow", 150, (s, w) -> new Apple(s, w));
+        System.out.println(apple);
 
     }
 
