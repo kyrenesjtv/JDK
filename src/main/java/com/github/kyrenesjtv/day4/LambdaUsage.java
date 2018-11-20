@@ -84,6 +84,11 @@ public class LambdaUsage {
         return biFunction.apply(color, weight);
     }
 
+    private static Apple testSupplier(Supplier<Apple> supplier) {
+        return supplier.get();
+    }
+
+
     public static void main(String[] args) {
 
         //        Runnable r1 = () -> System.out.println("hello world");
@@ -123,7 +128,15 @@ public class LambdaUsage {
         //        Double apply = resultInt.apply(10);
         //        System.out.println(apply);
 
-        Apple apple = testBiFunction("yellow", 150, (s, w) -> new Apple(s, w));
+        //        Apple apple = testBiFunction("yellow", 150, (s, w) -> new Apple(s, w));
+        //        System.out.println(apple);
+
+
+        //        Supplier<String> s = String ::new;
+        //        System.out.println(s.get().getClass());
+
+        Apple apple = testSupplier(() -> new Apple("bule", 100));
+
         System.out.println(apple);
 
     }
