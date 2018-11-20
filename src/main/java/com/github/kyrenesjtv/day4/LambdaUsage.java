@@ -3,7 +3,9 @@ package com.github.kyrenesjtv.day4;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
@@ -63,6 +65,20 @@ public class LambdaUsage {
         return result;
     }
 
+
+    private static void simpleTestConsumer(List<Apple> source, Consumer<Apple> consumer) {
+        for (Apple apple : source) {
+            consumer.accept(apple);
+        }
+    }
+
+    private static void simpleBiConsumer(String c, List<Apple> source, BiConsumer<Apple, String> consumer) {
+        for (Apple apple : source) {
+            consumer.accept(apple, c);
+        }
+    }
+
+
     public static void main(String[] args) {
 
         //        Runnable r1 = () -> System.out.println("hello world");
@@ -88,9 +104,12 @@ public class LambdaUsage {
         //        System.out.println(results);
 
         List<Apple> apples = Arrays.asList(new Apple("green", 11), new Apple("red", 22), new Apple("pink", 33), new Apple("black", 44));
-        List<Apple> results = filterByBiPredicate(apples, (string, weight) -> string.equals("green") && weight > 10);
-        System.out.println(results);
+        //        List<Apple> results = filterByBiPredicate(apples, (string, weight) -> string.equals("green") && weight > 10);
+        //        System.out.println(results);
 
+        //        simpleTestConsumer(apples,(a)-> System.out.println(a));
+
+        simpleBiConsumer("apple", apples, (a, s) -> System.out.println(a + s));
 
     }
 
